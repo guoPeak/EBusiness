@@ -20,6 +20,9 @@ $(function () {
                        min: 4,
                        max: 12,
                        message: '用户名长度必须在4到12之间'
+                   },
+                   callback: {
+                       message: '用户名不正确'
                    }
                } 
             },
@@ -33,23 +36,41 @@ $(function () {
                         min: 6,
                         max: 12,
                         message: '密码长度必须在6到12之间'
+                    },
+                    callback: {
+                        message: '密码不正确'
                     }
                 } 
              }
         }
     });
 
+    var validator = $("form").data('bootstrapValidator');
+
     $('form').on('success.form.bv', function (e) {  
         e.preventDefault();
         
         $.ajax({
             type: "post",
-            url: "url",
-            data: "data",
+            url: "/employee/employeeLogin",
+            data: $('form').serialize(),
             success: function (info) {
-                
-            }
+                if (info.success) {
+                    location.href = 'index.html';
+                }
+                if (info.error === 1000) {
+                    validator.updateStatus('username', 'INVALID', 'callback')
+                }
+                if (info.error === 1001) {
+                    validator.updateStatus('password', 'INVALID', 'callback')
+                }
+            }   
         });
+    })
+
+    //重置表单信息和状态
+    $('[type="reset"]').on('click', function () {  
+        validator.resetForm();
     })
 
 });
