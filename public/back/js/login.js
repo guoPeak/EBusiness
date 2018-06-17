@@ -46,7 +46,7 @@ $(function () {
             type: "post",
             url: "url",
             data: "data",
-            success: function (response) {
+            success: function (info) {
                 
             }
         });

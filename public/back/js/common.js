@@ -1,0 +1,4 @@
+
+$(document).ajaxStart(function () {  
+    
+})
