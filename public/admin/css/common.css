@@ -65,10 +65,21 @@ a:link {
     height: 40px;
     line-height: 40px;
     color: #fff;
+    padding-left: 50px;
+    border-left: 3px solid transparent;
 }
 
-.lt_aside .nav .child {
-    padding-left: 20px;
+.lt_aside .nav ul {
+    padding: 0;
+}
+
+.lt_aside .nav .child  a {
+    padding-left: 70px;
+}
+
+.lt_aside .nav a.active {
+    background-color: #1d1f21;
+    border-left-color: #069;
 }
 
 .lt_main {
@@ -98,4 +109,10 @@ a:link {
 
 .lt_main .breadcrumb {
     margin-top: 20px;
+}
+
+.table.table-bordered th,
+.table.table-bordered td {
+    text-align: center;
+    vertical-align: middle;
 }
