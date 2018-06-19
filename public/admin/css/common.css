@@ -6,6 +6,10 @@
     margin-top: 150px;
 }
 
+.mt_15 {
+    margin-top: 20px;
+}
+
 html, body {
     height: 100%;
 }

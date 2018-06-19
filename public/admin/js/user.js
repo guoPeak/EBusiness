@@ -7,22 +7,27 @@ $(function () {
 
     //注册启用或禁用事件
     $('tbody').on('click', '.btn', function () {
+        //显示模态框
+        $('#user-modal').modal('show');
         var id = $(this).parent().data('id');
         var isDelete = $(this).hasClass('btn-success') ? 1 : 0;
-        // console.log(id, isDelete);
-        $.ajax({
-            type: "post",
-            url: "/user/updateUser",
-            data: {
-                id: id,
-                isDelete: isDelete
-            },
-            success: function (info) {
-                if (info.success) {
-                    render();
+
+        $('.btn-confirm').off().on('click', function () {
+            $.ajax({
+                type: "post",
+                url: "/user/updateUser",
+                data: {
+                    id: id,
+                    isDelete: isDelete
+                },
+                success: function (info) {
+                    if (info.success) {
+                        $('#user-modal').modal('hide');
+                        render();
+                    }
                 }
-            }
-        });
+            });
+        })
     });
 
 
@@ -43,6 +48,7 @@ $(function () {
                 $('#paginator').bootstrapPaginator({
                     bootstrapMajorVersion: 3,
                     currentPage: page,
+                    size: 'small',
                     totalPages: Math.ceil(info.total / info.size),
                     onPageClicked: function (a, b, c, p) {
                         page = p;
