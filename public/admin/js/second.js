@@ -1,41 +1,46 @@
-$(function () {  
+$(function () {
 
     var page = 1;
     var pageSize = 5;
 
     render();
 
-
+    //发送ajax生成下拉菜单的内容
+    $.ajax({
+        type: "get",
+        url: "/category/queryTopCategoryPaging",
+        data: {
+            page: 1,
+            pageSize: 100
+        },
+        success: function (info) {
+            $('.dropdown-menu').html(template('tpl2', info));
+        }
+    });
     //添加显示模态框
-    $('#btn-add').on('click', function () {  
+    $('#btn-add').on('click', function () {
         $('#add-modal').modal('show');
-        //发送ajax生成下拉菜单的内容
-        $.ajax({
-            type: "get",
-            url: "/category/queryTopCategoryPaging",
-            data: {
-                page: 1,
-                pageSize: 100
-            },
-            success: function (info) {
-                $('.dropdown-menu').html(template('tpl2', info));
-            }
-        });
     });
 
     //下拉菜单选定效果
-    $('.dropdown-menu').on('click', 'a', function () { 
+    $('.dropdown-menu').on('click', 'a', function () {
         $('.dropdown-text').text($(this).text());
         $('#categoryId').val($(this).data('id'));
+
+        //使选项框改变为符合表单验证的
+        $('form').data('bootstrapValidator').updateStatus('categoryId', 'VALID');
     })
 
     //上传图片显示
     $('#fileupload').fileupload({
         dataType: 'json',
-        done: function (e,data) {
-            console.log(data);  
+        done: function (e, data) {
+            console.log(data);
             $('.img-box img').attr('src', data.result.picAddr);
             $('[name="brandLogo"]').val(data.result.picAddr); //给上传的表单输入图片的地址
+
+            //使校验合格
+            $('form').data('bootstrapValidator').updateStatus('brandLogo', 'VALID');
         }
     })
 
@@ -75,7 +80,7 @@ $(function () {
     });
 
     //注册表单验证成功发送的事件
-    $('form').on('success.form.bv', function (e) {  
+    $('form').on('success.form.bv', function (e) {
         e.preventDefault();
         $.ajax({
             type: "post",
@@ -93,7 +98,7 @@ $(function () {
         });
     })
 
-    function render() {  
+    function render() {
 
         $.ajax({
             type: "get",
@@ -109,9 +114,9 @@ $(function () {
                 $('#paginator').bootstrapPaginator({
                     bootstrapMajorVersion: 3,
                     currentPage: page,
-                    totalPages: Math.ceil(info.total/info.size),
+                    totalPages: Math.ceil(info.total / info.size),
                     size: 'small',
-                    onPageClicked: function (a,b,c,p) {  
+                    onPageClicked: function (a, b, c, p) {
                         page = p;
                         render();
                     }
