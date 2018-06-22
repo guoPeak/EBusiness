@@ -1,0 +1,30 @@
+.rg-form {
+    padding: 10px;
+}
+
+#code {
+    width: 65%;
+}
+
+.mui-input-row .get-code {
+    width: 30%;
+    height: 40px;
+    padding: 0;
+    line-height: 40px;
+}
+
+.mui-input-row .get-code.now {
+    background-color: #666;
+    border-color: #666;
+}
+
+#register {
+    width: 100%;
+    height: 40px;
+}
+
+.tips {
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+}
