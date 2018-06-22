@@ -217,9 +217,9 @@ $(function () {
         var data = $('form').serialize();
 
         //加上之前存在存放在img中的参数
-        data += "&picName=" + img[0].picName + "&picAddr=" + img[0].picAddr;
-        data += "&picName=" + img[1].picName + "&picAddr=" + img[1].picAddr;
-        data += "&picName=" + img[2].picName + "&picAddr=" + img[2].picAddr;
+        data += "&picName1=" + img[0].picName + "&picAddr1=" + img[0].picAddr;
+        data += "&picName2=" + img[1].picName + "&picAddr2=" + img[1].picAddr;
+        data += "&picName3=" + img[2].picName + "&picAddr3=" + img[2].picAddr;
 
         //发送请求添加商品
         $.ajax({

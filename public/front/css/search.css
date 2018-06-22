@@ -1,24 +1,29 @@
-.lt-search {
-    padding: 10px;
-    position: relative;
-}
-
-.lt-search input {
-    height: 34px;
-    padding-left: 10px;
-    font-size: 12px;
-}
-
-.lt-search button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
 
 .lt-history {
     padding: 10px;
+    font-size: 12px;
+    color: #666;
 }
 
 .lt-history .title {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+}
 
+.lt-history .content ul {
+    border: 1px dashed red;
+    border-bottom-color: transparent;
+}
+
+.lt-history .content ul li {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    border-bottom: 1px dashed red;
+}
+
+.lt-history .content span {
+    height: 30px;
+    line-height: 30px;
 }

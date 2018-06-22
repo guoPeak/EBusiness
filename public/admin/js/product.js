@@ -203,9 +203,9 @@ $(function () {
         e.preventDefault();
         var param = $('form').serialize();
 
-        param += "&picName=" + img[0].picName + "&picAddr=" + img[0].picAddr;
-        param += "&picName=" + img[1].picName + "&picAddr=" + img[1].picAddr;
-        param += "&picName=" + img[2].picName + "&picAddr=" + img[2].picAddr;
+        param += "&picName1=" + img[0].picName + "&picAddr1=" + img[0].picAddr;
+        param += "&picName2=" + img[1].picName + "&picAddr2=" + img[1].picAddr;
+        param += "&picName3=" + img[2].picName + "&picAddr3=" + img[2].picAddr;
 
         //发送ajax请求
         $.ajax({
