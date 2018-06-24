@@ -132,3 +132,9 @@ a:link {
     text-align: center;
     vertical-align: middle;
 }
+
+.echart-left,
+.echart-right {
+    width: 45%;
+    height: 400px;
+}
