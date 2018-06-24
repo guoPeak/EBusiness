@@ -1,0 +1,38 @@
+.join-cart {
+    height: 55px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid red;
+    padding: 10px;
+}
+
+.pad-10 {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.pro-price .price {
+    color: red;
+}
+
+.pro-price .oldPrice {
+    font-size: 12px;
+    text-decoration: line-through;
+}
+
+.pro-size span {
+    padding: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+.pro-size span.now {
+    background-color: #069;
+}
+
+.pro-num span {
+    font-size: 12px;
+    color: #666;
+}

@@ -93,6 +93,11 @@ $(function () {
                     //重新渲染
                     page = 1;
                     render();
+
+                    //重置表单
+                    $('form').data('bootstrapValidator').resetForm(true);
+                    $('.dropdown-text').text('请选择一级分类');
+                    $('.img-box img').attr('src', 'images/none.png');
                 }
             }
         });

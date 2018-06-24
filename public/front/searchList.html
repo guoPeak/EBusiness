@@ -24,10 +24,9 @@
 		</div>
 
 		<div class="lt_content">
-			<div class="mui-scroll-wrapper" id="refreshContainer">
+			<div class="mui-scroll-wrapper">
 				<div class="mui-scroll">
 					<!--数据列表-->
-					<ul class="mui-table-view mui-table-view-chevron">
 						<div class="lt-search">
 							<input type="text" placeholder="请输入搜索关键字">
 							<button class="mui-btn mui-btn-primary">搜索</button>
@@ -57,10 +56,10 @@
 						<div class="lt_product">
 							<ul class="mui-clearfix">
 								<!-- 安个坑 -->
-								<div class="loading"></div>
+								<!-- <div class="loading"></div> -->
 							</ul>
 						</div>
-					</ul>
+					
 
 				</div>
 			</div>
@@ -100,7 +99,7 @@
 	<script type="text/html" id="tpl">
 		{{each data v i}}
 		<li>
-			<a href="#">
+			<a href="product.html?productId={{v.id}}">
 				<img src="{{v.pic[0].picAddr}}">
 				<p class="mui-ellipsis-2 proName">{{v.num}}--{{v.proName}}</p>
 				<p>

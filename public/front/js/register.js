@@ -2,6 +2,18 @@ $(function () {
 
     //获取验证码
     $('.get-code').on('click', function () {
+        var mobile = $('[name="mobile"]').val();
+        
+        if (!mobile) {
+            mui.alert("请输入手机号码");
+            return;
+        }
+
+        if (!/^[1]\d{10}$/.test(mobile)) {
+            mui.alert("手机号码格式不正确");
+            return;
+        }
+
         $(this).addClass('now').prop('disabled', true).text('发送中...');
         $.get("/user/vCode", function (info) {
             var num = 10;
@@ -29,12 +41,12 @@ $(function () {
         var vCode = data[4];
 
         //表单校验
-        if (username.value === '') {
+        if (!username.value) {
             mui.alert("请输入用户名");
             return;
         }
 
-        if (password.value === '') {
+        if (!password.value) {
             mui.alert("请输入密码");
             return;
         }
@@ -44,7 +56,7 @@ $(function () {
             return;
         }
 
-        if (mobile.value === '') {
+        if (!mobile.value) {
             mui.alert("请输入手机号码");
             return;
         }
@@ -54,7 +66,7 @@ $(function () {
             return;
         }
 
-        if (vCode.value === '') {
+        if (!vCode.value) {
             mui.alert("请输入验证码");
             return;
         }
@@ -70,7 +82,15 @@ $(function () {
             url: "/user/register",
             data: data,
             success: function (info) {
-                
+                if (info.error) {
+                    mui.toast(info.message);
+                }
+                if (info.success) {
+                    mui.toast('注册成功，3秒后跳转到登录页');
+                    setTimeout(function () {  
+                        window.location.href = 'login.html';
+                    }, 3000)
+                }
             }
         });
 

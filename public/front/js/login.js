@@ -1,7 +1,6 @@
 $(function () {
 
     //校验表单
-
     $('#login').on('click', function () {
         var check = true;
         mui("form input").each(function () {
@@ -16,17 +15,26 @@ $(function () {
         });
         //校验通过，继续执行登录请求
         if (check) {
-            //mui.alert('验证通过!');
+            
+            var search = location.search;
+            search = search.replace('?back=', '');
+            console.log(search);
+
             $.ajax({
                 type: "post",
                 url: "/user/login",
                 data: $('form').serialize(),
                 success: function (info) {
+                    console.log(info);
                     if (info.success) {
-                       console.log(11); 
+                        if (search) {
+                            location.href = search;
+                        } else {
+                            location.href = 'user.html'
+                        }
                     }
                     if (info.error) {
-                        mui.alert("用户名或者密码错误");
+                        mui.alert(info.message);
                     }
                 }
             });
