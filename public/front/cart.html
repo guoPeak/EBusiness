@@ -78,7 +78,7 @@
     {{each info v i}}
     <li class="mui-table-view-cell mui-transitioning mui-selected">
         <div class="mui-slider-right mui-disabled mui-selected">
-          <a class="mui-btn mui-btn-blue edit-btn" data-id="{{v.id}}" data-size="{{v.productSize}}">
+          <a class="mui-btn mui-btn-blue edit-btn" data-id="{{v.id}}" data-product-size="{{v.productSize}}" data-size="{{v.size}}" data-num="{{v.num}}" data-product-num="{{v.productNum}}">
             <span class="mui-icon mui-icon-compose"></span>
           </a>
           <a class="mui-btn mui-btn-red delete-btn" data-id="{{v.id}}">
@@ -89,7 +89,7 @@
           <div class="mui-table-cell">
             <div class="mui-pull-left img-box">
               <img src="{{v.pic[0].picAddr}}">
-              <input type="checkbox" checked  data-price={{v.price}} data-num="{{v.num}}">
+              <input type="checkbox" checked class="checkbox"  data-price={{v.price}} data-num="{{v.num}}">
             </div>
             <div class="product-info">
               <p class="pro-name">{{v.proName}}</p>
@@ -113,16 +113,13 @@
       <% 
         var temp = productSize.split('-');
         for (var i = +temp[0]; i <= temp[1]; i++) {
-      %>
-      <span>{{i}}</span>
+      %> 
+      <span class="{{i==size?'now':''}}">{{i}}</span> 
       <% } %>
-    </div>
-      <!-- 商品数量 -->
-		<div class="pro-num">
-        数量：
-        <div class="mui-numbox" data-numbox-min='1' data-numbox-max='{{num}}'>
+    </div><div class="pro-num">
+        数量：<div class="mui-numbox" data-numbox-min='1' data-numbox-max='{{productNum}}'>
           <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
-          <input class="mui-numbox-input" type="number" />
+          <input class="mui-numbox-input" type="number" value="{{num}}" />
           <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
         </div>
       </div>
